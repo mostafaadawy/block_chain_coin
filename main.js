@@ -9,8 +9,6 @@ class Transactions{
 }
 class Block{
     constructor(timestamp, transactions, previousHash){
-    // constructor(index,timestamp, transactions, previousHash){
-        // this.index=index; // useless in chain order is already by position in array
         this.timestamp=timestamp;
         this.transactions=transactions;
         this.previousHash=previousHash;
@@ -37,7 +35,6 @@ class BlockChain{
     }
 
     createGenesisBlock(){
-        // return new Block(0,"01/01/2023","Mostafa Adawy","0");
         return new Block("01/01/2023","Mostafa Adawy","0");
     }
 
@@ -45,12 +42,6 @@ class BlockChain{
         return this.chain[this.chain.length -1];
     }
 
-    // addBlock(newBlock){
-    //     newBlock.previousHash=this.getLatestBlock()?this.getLatestBlock().hash:"";
-    //     // newBlock.hash=newBlock.calculateHash();
-    //     newBlock.mineBlock(this.difficulty);
-    //     this.chain.push(newBlock);
-    // }
     minePendingTransaction(miningRewardAddress){
         let block = new Block(Date.now(),this.pendingTransactions) // note in reality we can not add all transactions we have to select 
                                                                     //which we add and which is not so for this educational purpose we ignore that  at moment 
@@ -77,19 +68,3 @@ class BlockChain{
     }
 }
 let theCoin= new BlockChain();
-
-//second video
-// console.log('Mining Block 1 ...')
-// theCoin.addBlock(new Block(1,"01/01/2023",{amount:1}));
-// console.log('Mining Block 2 ...')
-// theCoin.addBlock(new Block(2,"01/01/2023",{amount:20}));
-// console.log('Mining Block 3 ...')
-// theCoin.addBlock(new Block(3,"01/01/2023",{amount:30}));
-// console.log('Mining Block 4 ...')
-// theCoin.addBlock(new Block(4,"01/01/2023",{amount:400}));
-
-//first video comments
-// console.log(JSON.stringify(theCoin,null,4))
-// console.log('Is blockchain vialed? ', theCoin.isChainVialed())
-// theCoin.chain[1].data={amount:100}
-// console.log('Is blockchain vialed? ', theCoin.isChainVialed())
