@@ -30,4 +30,5 @@ this repo is implementation for simple cryptocurrency and thanks return to [Simp
     24-create 2 transaction from to 
     25-mine that pended transactions
 # till now any one can make any transaction so how to prevent that by sining transaction block chain
-    26-
+    26-to prevent spending coins that aren't yours
+    
