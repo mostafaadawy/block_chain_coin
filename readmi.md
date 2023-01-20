@@ -23,5 +23,5 @@
     19 - in real we can not save all transaction and data minors select which will be and which not but for our educational purpose we save all
     20- replacing add block by minePendingTransaction that calls new Block with the pended blocks
     21-create a method that check the balance of an address
-    22- the objective is to vaildate that the amount for that address in all the change is right
+    22- the objective is to determine the amount for or to and calculate the balance for the the 2 addresses
      

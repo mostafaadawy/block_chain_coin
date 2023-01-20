@@ -1,3 +1,4 @@
+const { table } = require('console');
 const SHA256 = require('crypto-js/sha256')
 
 class Transactions{
@@ -54,6 +55,20 @@ class BlockChain{
     }
     createTransaction(transaction){
         this.pendingTransactions.push(transaction)
+    }
+    getBalanceOfAnAddress(address){
+        let balance=0
+        for(const block of this.chain){
+            for(const trans of block.transactions){
+                if(trans.fromAddress===address){
+                    balance-= trans.amount
+                }
+                if(trans.toAddress===address){
+                    balance+=trans.amount
+                }
+            }
+        }
+        return balance
     }
     isChainVialed(){
         for(let i=1; i<this.chain.length;i++){
