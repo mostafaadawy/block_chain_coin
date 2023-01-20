@@ -17,7 +17,7 @@ class Block{
         this.nonce=0
     }
     calculateHash(){
-        return SHA256(this.index+this.previousHash+this.timestamp+JSON.stringify(this.data)+this.nonce).toString();
+        return SHA256(this.index+this.previousHash+this.timestamp+JSON.stringify(this.transactions)+this.nonce).toString();
     }
     mineBlock(difficulty){
         while(this.hash.substring(0, difficulty) !== Array(difficulty+1).join("0")){
@@ -47,10 +47,10 @@ class BlockChain{
         let block = new Block(Date.now(),this.pendingTransactions) // note in reality we can not add all transactions we have to select 
                                                                     //which we add and which is not so for this educational purpose we ignore that  at moment 
         block.mineBlock(this.difficulty)
-        console.log('Block Successfully mined')
+        console.log('Block Successfully mined!')
         this.chain.push(block)
         this.pendingTransactions=[
-            new Transactions(null, miningRewardAddress,this.miningReward)
+            new Transaction(null, miningRewardAddress,this.miningReward)
         ]
     }
     createTransaction(transaction){
@@ -88,6 +88,6 @@ class BlockChain{
 let theCoin= new BlockChain();
 theCoin.createTransaction(new Transaction('address1','address2',100))
 theCoin.createTransaction(new Transaction('address2','address1',50))
-console.log('\n starting the minor')
-theCoin.minePendingTransactions('adawy address')
-console.log('\n Balance of adawy is ',theCoin.getBalanceOfAnAddress('adawy address'))
+console.log('\n starting the miner...')
+theCoin.minePendingTransactions('adawy-address')
+console.log('\n Balance of adawy is ',theCoin.getBalanceOfAnAddress('adawy-address'))
