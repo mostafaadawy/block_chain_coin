@@ -45,11 +45,21 @@ class BlockChain{
         return this.chain[this.chain.length -1];
     }
 
-    addBlock(newBlock){
-        newBlock.previousHash=this.getLatestBlock()?this.getLatestBlock().hash:"";
-        // newBlock.hash=newBlock.calculateHash();
-        newBlock.mineBlock(this.difficulty);
-        this.chain.push(newBlock);
+    // addBlock(newBlock){
+    //     newBlock.previousHash=this.getLatestBlock()?this.getLatestBlock().hash:"";
+    //     // newBlock.hash=newBlock.calculateHash();
+    //     newBlock.mineBlock(this.difficulty);
+    //     this.chain.push(newBlock);
+    // }
+    minePendingTransaction(miningRewardAddress){
+        let block = new Block(Date.now(),this.pendingTransactions) // note in reality we can not add all transactions we have to select 
+                                                                    //which we add and which is not so for this educational purpose we ignore that  at moment 
+        block.mineBlock(this.difficulty)
+        console.log('Block Successfully mined')
+        this.chain.push(block)
+        this.pendingTransactions=[
+            new Transactions(null, miningRewardAddress,this.miningReward)
+        ]
     }
     isChainVialed(){
         for(let i=1; i<this.chain.length;i++){
