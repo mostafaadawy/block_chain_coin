@@ -31,4 +31,5 @@ this repo is implementation for simple cryptocurrency and thanks return to [Simp
     25-mine that pended transactions
 # till now any one can make any transaction so how to prevent that by sining transaction block chain
     26-to prevent spending coins that aren't yours
+    27- adding key generator with elliptic curve package to fet private and public keys
     
