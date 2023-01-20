@@ -57,14 +57,14 @@ class BlockChain{
 let theCoin= new BlockChain();
 
 //second video
-console.log('Mining Block 1 ...')
-theCoin.addBlock(new Block(1,"01/01/2023",{amount:1}));
-console.log('Mining Block 2 ...')
-theCoin.addBlock(new Block(2,"01/01/2023",{amount:20}));
-console.log('Mining Block 3 ...')
-theCoin.addBlock(new Block(3,"01/01/2023",{amount:30}));
-console.log('Mining Block 4 ...')
-theCoin.addBlock(new Block(4,"01/01/2023",{amount:400}));
+// console.log('Mining Block 1 ...')
+// theCoin.addBlock(new Block(1,"01/01/2023",{amount:1}));
+// console.log('Mining Block 2 ...')
+// theCoin.addBlock(new Block(2,"01/01/2023",{amount:20}));
+// console.log('Mining Block 3 ...')
+// theCoin.addBlock(new Block(3,"01/01/2023",{amount:30}));
+// console.log('Mining Block 4 ...')
+// theCoin.addBlock(new Block(4,"01/01/2023",{amount:400}));
 
 //first video comments
 // console.log(JSON.stringify(theCoin,null,4))
