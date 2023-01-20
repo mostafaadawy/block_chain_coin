@@ -11,5 +11,5 @@
     8- get latest block to be used in previous hash
     9- addblock that calculate the previous or latest block hash to be saved in previous hash in the new block and then pushed this block to the chain
     10- we call an object and test it by adding some data and loggout the result
-    
+    11- we add validation method in the block chain class that checks current hash and previous hash 
     
