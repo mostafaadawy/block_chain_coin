@@ -1,9 +1,9 @@
 const SHA256 = require('crypto-js/sha256')
 class Block{
-    constructor(index, timestamp, data, previousHash){
-        this.index=index;
+    constructor(timestamp, transactions, previousHash){
+        // this.index=index; // useless in chain order is already by position in array
         this.timestamp=timestamp;
-        this.data=data;
+        this.transactions=transactions;
         this.previousHash=previousHash;
         this.hash=this.calculateHash();
         this.nonce=0
@@ -26,7 +26,7 @@ class BlockChain{
     }
 
     createGenesisBlock(){
-        return new Block(0,"01/01/2023","Mostafa Adawy","0");
+        return new Block("01/01/2023","Mostafa Adawy","0");
     }
 
     getLatestBlock(){
