@@ -11,13 +11,13 @@ class Block{
     calculateHash(){
         return SHA256(this.index+this.previousHash+this.timestamp+JSON.stringify(this.data)+this.nonce).toString();
     }
-    // mineBlock(difficulty){
-    //     while(this.hash.substring(0, difficulty) !== Array(difficulty+1).join("0")){
-    //         this.nonce++
-    //         this.hash= this.calculateHash();
-    //     }
-    //     console.log('Block Mind: ', this.hash)
-    //}
+    mineBlock(difficulty){
+        while(this.hash.substring(0, difficulty) !== Array(difficulty+1).join("0")){
+            this.nonce++
+            this.hash= this.calculateHash();
+        }
+        console.log('Block Mind: ', this.hash)
+    }
 }
 class BlockChain{
     constructor(){
@@ -35,8 +35,8 @@ class BlockChain{
 
     addBlock(newBlock){
         newBlock.previousHash=this.getLatestBlock()?this.getLatestBlock().hash:"";
-        newBlock.hash=newBlock.calculateHash();
-        //newBlock.mineBlock(this.difficulty);
+        // newBlock.hash=newBlock.calculateHash();
+        newBlock.mineBlock(this.difficulty);
         this.chain.push(newBlock);
     }
     isChainVialed(){
@@ -57,17 +57,17 @@ class BlockChain{
 let theCoin= new BlockChain();
 
 //second video
-// console.log('Mining Block 1 ...')
+console.log('Mining Block 1 ...')
 theCoin.addBlock(new Block(1,"01/01/2023",{amount:1}));
-// console.log('Mining Block 2 ...')
+console.log('Mining Block 2 ...')
 theCoin.addBlock(new Block(2,"01/01/2023",{amount:20}));
-// console.log('Mining Block 3 ...')
+console.log('Mining Block 3 ...')
 theCoin.addBlock(new Block(3,"01/01/2023",{amount:30}));
-// console.log('Mining Block 4 ...')
+console.log('Mining Block 4 ...')
 theCoin.addBlock(new Block(4,"01/01/2023",{amount:400}));
 
 //first video comments
-console.log(JSON.stringify(theCoin,null,4))
-console.log('Is blockchain vialed? ', theCoin.isChainVialed())
-theCoin.chain[1].data={amount:100}
-console.log('Is blockchain vialed? ', theCoin.isChainVialed())
+// console.log(JSON.stringify(theCoin,null,4))
+// console.log('Is blockchain vialed? ', theCoin.isChainVialed())
+// theCoin.chain[1].data={amount:100}
+// console.log('Is blockchain vialed? ', theCoin.isChainVialed())
