@@ -68,6 +68,6 @@ theCoin.addBlock(new Block(4,"01/01/2023",{amount:400}));
 
 //first video comments
 console.log(JSON.stringify(theCoin,null,4))
-// console.log('Is blockchain vialed? ', theCoin.isChainVialed())
-// theCoin.chain[1].data={amount:100}
-// console.log('Is blockchain vialed? ', theCoin.isChainVialed())
+console.log('Is blockchain vialed? ', theCoin.isChainVialed())
+theCoin.chain[1].data={amount:100}
+console.log('Is blockchain vialed? ', theCoin.isChainVialed())
