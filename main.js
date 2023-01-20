@@ -52,6 +52,9 @@ class BlockChain{
             new Transactions(null, miningRewardAddress,this.miningReward)
         ]
     }
+    createTransaction(transaction){
+        this.pendingTransactions.push(transaction)
+    }
     isChainVialed(){
         for(let i=1; i<this.chain.length;i++){
             const currentBlock = this.chain[i]
