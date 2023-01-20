@@ -24,4 +24,7 @@
     20- replacing add block by minePendingTransaction that calls new Block with the pended blocks
     21-create a method that check the balance of an address
     22- the objective is to determine the amount for or to and calculate the balance for the the 2 addresses
-     
+# test our code
+    23-we call an object from our blockchain cryptocurrency
+    24-create 2 transaction from to 
+    25-mine that pended transactions

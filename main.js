@@ -1,7 +1,7 @@
 const { table } = require('console');
 const SHA256 = require('crypto-js/sha256')
 
-class Transactions{
+class Transaction{
     constructor(fromAddress, toAddress, amount){
         this.fromAddress=fromAddress
         this.toAddress=toAddress
@@ -29,7 +29,7 @@ class Block{
 }
 class BlockChain{
     constructor(){
-        this.difficulty=4
+        this.difficulty=2
         this.chain=[this.createGenesisBlock()];
         this.pendingTransactions=[] // contains transactions till the previous ones finishes proof of work
         this.miningReward=100; // reward for the mining
@@ -43,7 +43,7 @@ class BlockChain{
         return this.chain[this.chain.length -1];
     }
 
-    minePendingTransaction(miningRewardAddress){
+    minePendingTransactions(miningRewardAddress){
         let block = new Block(Date.now(),this.pendingTransactions) // note in reality we can not add all transactions we have to select 
                                                                     //which we add and which is not so for this educational purpose we ignore that  at moment 
         block.mineBlock(this.difficulty)
@@ -86,3 +86,8 @@ class BlockChain{
     }
 }
 let theCoin= new BlockChain();
+theCoin.createTransaction(new Transaction('address1','address2',100))
+theCoin.createTransaction(new Transaction('address2','address1',50))
+console.log('\n starting the minor')
+theCoin.minePendingTransactions('adawy address')
+console.log('\n Balance of adawy is ',theCoin.getBalanceOfAnAddress('adawy address'))
