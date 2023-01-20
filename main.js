@@ -32,6 +32,8 @@ class BlockChain{
     constructor(){
         this.difficulty=4
         this.chain=[this.createGenesisBlock()];
+        this.pendingTransactions=[] // contains transactions till the previous ones finishes proof of work
+        this.miningReward=100; // reward for the mining
     }
 
     createGenesisBlock(){
