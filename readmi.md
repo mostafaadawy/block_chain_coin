@@ -32,4 +32,5 @@ this repo is implementation for simple cryptocurrency and thanks return to [Simp
 # till now any one can make any transaction so how to prevent that by sining transaction block chain
     26-to prevent spending coins that aren't yours
     27- adding key generator with elliptic curve package to fet private and public keys
-    
+    28- using secp  elliptic curve algorithm the basis for bitcoin wallets
+    29-generating the key pair and extracting the private and public
