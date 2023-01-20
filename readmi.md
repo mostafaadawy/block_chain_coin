@@ -22,3 +22,6 @@
     18- adding pending transaction to emulate the real world where in real we should pend transaction tell we finish previous proof of work
     19 - in real we can not save all transaction and data minors select which will be and which not but for our educational purpose we save all
     20- replacing add block by minePendingTransaction that calls new Block with the pended blocks
+    21-create a method that check the balance of an address
+    22- the objective is to vaildate that the amount for that address in all the change is right
+     
