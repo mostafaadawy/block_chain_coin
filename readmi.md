@@ -14,3 +14,10 @@
     11- we add validation method in the block chain class that checks current hash and previous hash 
     12- adding proof of work  that makes the operation takes some time to make it harder to alter the whole chain data
     13- this can be done using nonce that changes the block value and regenerate hash till it match a condition and the difficulty can be defined by the length of this mating substring
+    14- for converting these classes to work on transactions 
+    15- we remove index where the position of the block in the array is enough 
+    16 creating transaction class to structure the transaction data
+    17- adding data object to transaction 
+    18- adding pending transaction to emulate the real world where in real we should pend transaction tell we finish previous proof of work
+    19 - in real we can not save all transaction and data minors select which will be and which not but for our educational purpose we save all
+    
