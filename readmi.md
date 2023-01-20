@@ -1,4 +1,5 @@
 # run using node main
+this repo is implementation for simple cryptocurrency and thanks return to [Simply Explained](https://www.youtube.com/playlist?list=PLzvRQMJ9HDiTqZmbtFisdXFxul5k0F-Q4) 
 # Building Methodologies
 ## To begin creating blockchain
     1- it's all begin by creating the chain class called block
@@ -28,3 +29,5 @@
     23-we call an object from our blockchain cryptocurrency
     24-create 2 transaction from to 
     25-mine that pended transactions
+# till now any one can make any transaction so how to prevent that by sining transaction block chain
+    26-
