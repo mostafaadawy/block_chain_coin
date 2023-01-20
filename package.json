@@ -7,6 +7,6 @@
   },
   "scripts": {
     "start":"node main",
-    "keygen":"node /blockchain/keyGenerator"
+    "keygen":"node ./blockchain/keyGenerator"
   }
 }
