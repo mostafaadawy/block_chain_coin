@@ -47,6 +47,14 @@ class Block{
         }
         console.log('Block Mind: ', this.hash)
     }
+    addingVialedTransaction(){
+        for(const tx in this.transactions){
+            if(!tx.isVialed()){
+                return false
+            }
+        }
+        return true;
+    }
 }
 class BlockChain{
     constructor(){
