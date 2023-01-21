@@ -21,3 +21,4 @@ theCoin.minePendingTransactions(myWalletAddress)
 
 console.log('\n Balance of Mostafa Adawy is :',theCoin.getBalanceOfAnAddress(myWalletAddress))
 
+console.log('Is Chain Vialed? ',theCoin.isChainVialed())
