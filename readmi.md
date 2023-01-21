@@ -46,4 +46,6 @@ Public key:  04e55c411ce8a51919db5eb2f6bab532f5bda3e95e56c9df8edd7089fa1d907bad7
     34- we sign the hash of transaction instead of transaction to check integrity
     35- sining with our private key 
     36- create check isVailed check there is no signature throw an error except for null address where we reserve this for reward transaction
+    37- we also check if the transaction public key is rhe key that sign the transaction or not by converting public key string to object format for elliptic curve
+    38- verify that signature which comes from hashed value of transaction and public key or from address is true where we can remove the effect of the signature if multiplied by the same key so id returned the same first input argument transaction hash it returns true and if not returns false
     
