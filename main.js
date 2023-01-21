@@ -9,7 +9,7 @@ const{BlockChain,Transaction} = require('./blockChain/blockchain')
 let theCoin= new BlockChain();
 
 const tx1 = new Transaction(myWalletAddress,"to address public key will be here",10)
-
+tx1.singTransaction(myKey)
 
 theCoin.createTransaction(new Transaction('address1','address2',100))
 theCoin.createTransaction(new Transaction('address2','address1',50))
