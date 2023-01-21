@@ -26,11 +26,8 @@ class Transaction{
         }
 
         const publicKey =ec.keyFromPublic(this.fromAddress, 'hex') //convert public key string to object format for elliptic curve
-        if(!publicKey.verify(this.calculateHash(), this.signature)){ // verify that signature which comes from hashed value of transaction and public key or from address is true where we can remove the effect of the signature if multiplied by the same key so id returned the same first input argument transaction hash it returns true and if not returns false
-            console.log('public key: ',this.fromAddress)
-            throw new Error('Wrong Signature')
-        }
-        return true 
+        return publicKey.verify(this.calculateHash(), this.signature) // verify that signature which comes from hashed value of transaction and public key or from address is true where we can remove the effect of the signature if multiplied by the same key so id returned the same first input argument transaction hash it returns true and if not returns false
+            
     }
 }
     class Block{

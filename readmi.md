@@ -68,3 +68,4 @@ Public key:  04e55c411ce8a51919db5eb2f6bab532f5bda3e95e56c9df8edd7089fa1d907bad7
 
 ## testing tamper blockchain
     53-testing is chain vialed
+    54-testing tamper changing amount in transaction
