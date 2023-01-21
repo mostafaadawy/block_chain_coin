@@ -47,7 +47,7 @@ class Block{
         }
         console.log('Block Mind: ', this.hash)
     }
-    addingVialedTransaction(){
+    hasVialedTransaction(){
         for(const tx in this.transactions){
             if(!tx.isVialed()){
                 return false
@@ -82,7 +82,13 @@ class BlockChain{
             new Transaction(null, miningRewardAddress,this.miningReward)
         ]
     }
-    createTransaction(transaction){
+    addTransaction(transaction){
+        if(!transaction.fromAddress ||transaction.toAddress){
+            throw Error('The transaction must includes from and to address')
+        }
+        if(!transaction.isVialed()){
+            throw Error('Cannot Add invalid transaction to the chain')
+        }
         this.pendingTransactions.push(transaction)
     }
     getBalanceOfAnAddress(address){
@@ -103,6 +109,10 @@ class BlockChain{
         for(let i=1; i<this.chain.length;i++){
             const currentBlock = this.chain[i]
             const previousBlock=this.chain[i-1]
+
+            if(!currentBlock.hasVialedTransaction()){
+                return false
+            }
             if(currentBlock.hash !== currentBlock.calculateHash()){
                 return false;
             }

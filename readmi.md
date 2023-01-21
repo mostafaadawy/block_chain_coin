@@ -50,5 +50,10 @@ Public key:  04e55c411ce8a51919db5eb2f6bab532f5bda3e95e56c9df8edd7089fa1d907bad7
     38- verify that signature which comes from hashed value of transaction and public key or from address is true where we can remove the effect of the signature if multiplied by the same key so id returned the same first input argument transaction hash it returns true and if not returns false
 
 ## modifying block class
-    39- addingVialedTransaction method can verify all transaction where it loops all transaction to check using the transaction class method isVialed to filter which is not
-    40- 
+    39- adding hasVialedTransaction method can verify all transaction where it loops all transaction to check using the transaction class method isVialed to filter which is not
+## modifying blockchain class
+    40- in isChainVialed that already check all block it is chained and verified  and we add another check to check all transaction in all blocks is vialed 
+    41- rename createTransaction to addTransaction where it is not creating it adds
+    43- adding few checks to addTransaction such as check fromAddress and toAddress are filled 
+    44- before adding check if it is vialed
+
