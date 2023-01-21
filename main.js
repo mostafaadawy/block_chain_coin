@@ -7,6 +7,10 @@ const myWalletAddress=myKey.getPublic('hex')
 
 const{BlockChain,Transaction} = require('./blockChain/blockchain')
 let theCoin= new BlockChain();
+
+const tx1 = new Transaction(myWalletAddress,"to address public key will be here",10)
+
+
 theCoin.createTransaction(new Transaction('address1','address2',100))
 theCoin.createTransaction(new Transaction('address2','address1',50))
 console.log('\n starting the miner...')

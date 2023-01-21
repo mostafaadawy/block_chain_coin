@@ -60,4 +60,6 @@ Public key:  04e55c411ce8a51919db5eb2f6bab532f5bda3e95e56c9df8edd7089fa1d907bad7
     45-importing elliptic library 
     46- get key from my private key saved string in object formate
     47- from private get public/walletAddress
+    48- make new transaction 
+
 
