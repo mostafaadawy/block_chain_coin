@@ -34,3 +34,16 @@ this repo is implementation for simple cryptocurrency and thanks return to [Simp
     27- adding key generator with elliptic curve package to fet private and public keys
     28- using secp  elliptic curve algorithm the basis for bitcoin wallets
     29-generating the key pair and extracting the private and public
+    30- editing script to run key generator and generate as follows
+```sh
+Private key:  c92e818a02b1c9fecc3489ff9538e9901e939ba2e575dc6a2ffdf13e3006f741
+
+Public key:  04e55c411ce8a51919db5eb2f6bab532f5bda3e95e56c9df8edd7089fa1d907bad78620f82364710513fbf49a29ad6b7009e55ccca1a5273ce491c4fb31c9e6f92
+```
+    31- modifying our blockchain classes
+    32- in transaction we need to check the public key if not same as the fromaddress throw error you cannot sign transaction for other wallets
+    33- also we need to sign these transaction
+    34- we sign the hash of transaction instead of transaction to check integrity
+    35- sining with our private key 
+    36- create check isVailed check there is no signature throw an error except for null address where we reserve this for reward transaction
+    
