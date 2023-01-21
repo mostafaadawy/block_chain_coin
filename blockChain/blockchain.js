@@ -1,11 +1,29 @@
 const { table } = require('console');
 const SHA256 = require('crypto-js/sha256')
-
+const EC =require('elliptic').ec;
+const ec = new EC('secp256k1');
 class Transaction{
     constructor(fromAddress, toAddress, amount){
         this.fromAddress=fromAddress
         this.toAddress=toAddress
         this.amount=amount
+    }
+    calculateHash(){
+        return SHA256(this.fromAddress+this.toAddress+this.amount).toString();
+    }
+    singTransaction(siningKey){
+        if(siningKey.publickey !==this.fromAddress){
+            throw new Error('You cannot sign this transaction for other wallets')
+        }
+        const hashTX= this.calculateHash();
+        const sig= siningKey.sign(hashTX,'base64')
+        this.signature= sig.toDER('hex')
+    }
+    isVialed(){
+        if(this.fromAddress===null) return true
+        if(!this.signature||this.singTransaction.length===0){
+            throw Error('There is no signature for this transaction')
+        }
     }
 }
 class Block{
