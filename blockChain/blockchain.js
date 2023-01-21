@@ -11,25 +11,29 @@ class Transaction{
     calculateHash(){
         return SHA256(this.fromAddress+this.toAddress+this.amount).toString();
     }
-    singTransaction(siningKey){
-        if(siningKey.publickey !==this.fromAddress){
+    singTransaction(signingKey){
+        if(signingKey.getPublic('hex') !==this.fromAddress){
             throw new Error('You cannot sign this transaction for other wallets')
         }
         const hashTX= this.calculateHash();
-        const sig= siningKey.sign(hashTX,'base64')
+        const sig= signingKey.sign(hashTX,'base64')
         this.signature= sig.toDER('hex')
     }
     isVialed(){
         if(this.fromAddress===null) return true
         if(!this.signature||this.singTransaction.length===0){
-            throw Error('There is no signature for this transaction')
+            throw new Error('There is no signature for this transaction')
         }
 
-        const publicKey =ec.keyFromPublic(this.fromAddress,'hex') //convert public key string to object format for elliptic curve
-        return publicKey.verify(this.calculateHash,this.signature) // verify that signature which comes from hashed value of transaction and public key or from address is true where we can remove the effect of the signature if multiplied by the same key so id returned the same first input argument transaction hash it returns true and if not returns false
+        const publicKey =ec.keyFromPublic(this.fromAddress, 'hex') //convert public key string to object format for elliptic curve
+        if(!publicKey.verify(this.calculateHash(), this.signature)){ // verify that signature which comes from hashed value of transaction and public key or from address is true where we can remove the effect of the signature if multiplied by the same key so id returned the same first input argument transaction hash it returns true and if not returns false
+            console.log('public key: ',this.fromAddress)
+            throw new Error('Wrong Signature')
+        }
+        return true 
     }
 }
-class Block{
+    class Block{
     constructor(timestamp, transactions, previousHash){
         this.timestamp=timestamp;
         this.transactions=transactions;
@@ -65,7 +69,7 @@ class BlockChain{
     }
 
     createGenesisBlock(){
-        return new Block("01/01/2023","Mostafa Adawy","0");
+        return new Block(Date.parse('2020-01-01'),[],"0");
     }
 
     getLatestBlock(){
@@ -73,21 +77,22 @@ class BlockChain{
     }
 
     minePendingTransactions(miningRewardAddress){
-        let block = new Block(Date.now(),this.pendingTransactions) // note in reality we can not add all transactions we have to select 
-                                                                    //which we add and which is not so for this educational purpose we ignore that  at moment 
+        const rewardTx = new Transaction(null,miningRewardAddress,this.miningReward)
+        this.pendingTransactions.push(rewardTx)
+
+        let block = new Block(Date.now(),this.pendingTransactions, this.getLatestBlock().hash) // note in reality we can not add all transactions we have to select 
+                                                                 //which we add and which is not so for this educational purpose we ignore that  at moment 
         block.mineBlock(this.difficulty)
         console.log('Block Successfully mined!')
         this.chain.push(block)
-        this.pendingTransactions=[
-            new Transaction(null, miningRewardAddress,this.miningReward)
-        ]
+        this.pendingTransactions=[]
     }
     addTransaction(transaction){
-        if(!transaction.fromAddress ||transaction.toAddress){
-            throw Error('The transaction must includes from and to address')
+        if(!transaction.fromAddress ||!transaction.toAddress){
+            throw new Error('The transaction must includes from and to address')
         }
         if(!transaction.isVialed()){
-            throw Error('Cannot Add invalid transaction to the chain')
+            throw new Error('Cannot Add invalid transaction to the chain')
         }
         this.pendingTransactions.push(transaction)
     }

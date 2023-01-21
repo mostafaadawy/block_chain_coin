@@ -10,7 +10,7 @@ let theCoin= new BlockChain();
 
 
 
-const tx1 = new Transaction(myWalletAddress,"to address public key will be here",10)
+const tx1 = new Transaction(myWalletAddress,'to address public key will be here',10)
 tx1.singTransaction(myKey)
 theCoin.addTransaction(tx1)
 
@@ -19,5 +19,5 @@ console.log('\n starting the miner...')
 
 theCoin.minePendingTransactions(myWalletAddress)
 
-console.log('\n Balance of adawy is ',theCoin.getBalanceOfAnAddress(myWalletAddress))
+console.log('\n Balance of Mostafa Adawy is :',theCoin.getBalanceOfAnAddress(myWalletAddress))
 
