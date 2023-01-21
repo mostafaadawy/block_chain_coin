@@ -57,5 +57,5 @@ Public key:  04e55c411ce8a51919db5eb2f6bab532f5bda3e95e56c9df8edd7089fa1d907bad7
     43- adding few checks to addTransaction such as check fromAddress and toAddress are filled 
     44- before adding check if it is vialed
 ## edit main for testing
-    45-
+    45-importing elliptic library 
 

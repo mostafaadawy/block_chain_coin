@@ -1,3 +1,6 @@
+const EC =require('elliptic').ec;
+const ec = new EC('secp256k1');
+
 const{BlockChain,Transaction} = require('./blockChain/blockchain')
 let theCoin= new BlockChain();
 theCoin.createTransaction(new Transaction('address1','address2',100))
