@@ -52,7 +52,7 @@ class Transaction{
         console.log('Block Mind: ', this.hash)
     }
     hasVialedTransaction(){
-        for(const tx in this.transactions){
+        for(const tx of this.transactions){
             if(!tx.isVialed()){
                 return false
             }
